@@ -2,6 +2,7 @@ package com.chill.dropit;
 
 import com.google.common.base.Stopwatch;
 import com.google.common.collect.HashMultimap;
+import com.google.common.collect.Sets;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -13,8 +14,6 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Data
 @Slf4j
@@ -25,17 +24,17 @@ public class FileManager{
 
     private HashMultimap<String, String> getMultiMap(){
         HashMultimap<String, String> multiMap = HashMultimap.create();
-        multiMap.putAll("图片", Stream.of("png", "jpg", "jpeg", "gif").collect(Collectors.toSet()));
-        multiMap.putAll("压缩包", Stream.of("zip", "rar", "7z").collect(Collectors.toSet()));
-        multiMap.putAll("文档资料", Stream.of("txt", "md", "doc", "docx", "xls", "xlsx", "csv", "ppt", "pptx").collect(Collectors.toSet()));
-        multiMap.putAll("电子书", Stream.of("pdf", "mobi", "azw3").collect(Collectors.toSet()));
-        multiMap.putAll("可执行文件", Stream.of("exe").collect(Collectors.toSet()));
-        multiMap.putAll("安卓安装包", Stream.of("apk").collect(Collectors.toSet()));
-        multiMap.putAll("快捷方式", Stream.of("lnk").collect(Collectors.toSet()));
-        multiMap.putAll("音频", Stream.of("mp3", "wmv", "m4a", "flac").collect(Collectors.toSet()));
-        multiMap.putAll("视频", Stream.of("mp4", "mkv", "avi").collect(Collectors.toSet()));
-        multiMap.putAll("json文件", Stream.of("json").collect(Collectors.toSet()));
-        multiMap.putAll("sql脚本", Stream.of("sql").collect(Collectors.toSet()));
+        multiMap.putAll("图片", Sets.newHashSet("png", "jpg", "jpeg", "gif"));
+        multiMap.putAll("压缩包", Sets.newHashSet("zip", "rar", "7z"));
+        multiMap.putAll("文档资料", Sets.newHashSet("txt", "md", "doc", "docx", "xls", "xlsx", "csv", "ppt", "pptx"));
+        multiMap.putAll("电子书", Sets.newHashSet("pdf", "mobi", "azw3"));
+        multiMap.putAll("可执行文件", Sets.newHashSet("exe"));
+        multiMap.putAll("安卓安装包", Sets.newHashSet("apk"));
+        multiMap.putAll("快捷方式", Sets.newHashSet("lnk"));
+        multiMap.putAll("音频", Sets.newHashSet("mp3", "wmv", "m4a", "flac"));
+        multiMap.putAll("视频", Sets.newHashSet("mp4", "mkv", "avi"));
+        multiMap.putAll("json文件", Sets.newHashSet("json"));
+        multiMap.putAll("sql脚本", Sets.newHashSet("sql"));
         return multiMap;
 
     }
